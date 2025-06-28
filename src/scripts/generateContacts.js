@@ -4,16 +4,19 @@ import { readContacts } from '../utils/readContacts.js';
 import { writeContacts } from '../utils/writeContacts.js';
 
 const generateContacts = async (number) => {
-  const oldContacts = readContacts();
-  //   console.log(process.cwd());
-  //   const newContacts = faker.helpers.multiple(createFakeContact, {
-  //     count: number,
-  //   });
-  //   const contacts = oldContacts.
-  console.log(oldContacts);
-  //   console.log(newContacts);
-  //   console.log(JSON.stringify(newContacts));
-  //   writeContacts(JSON.stringify(newContacts));
+  readContacts()
+    .then((oldContacts) => {
+      const oldContactsParsed = JSON.parse(oldContacts);
+      // console.log(oldContactsParsed);
+      const fakerContacts = faker.helpers.multiple(createFakeContact, {
+        count: number,
+      });
+      // console.log(fakerContacts);
+      const newContacts = oldContactsParsed.concat(fakerContacts);
+      // console.log(newContacts);
+      writeContacts(JSON.stringify(newContacts));
+    })
+    .catch((error) => console.error(error));
 };
 
 generateContacts(5);
