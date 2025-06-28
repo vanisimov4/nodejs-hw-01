@@ -1,8 +1,8 @@
-import path from 'node:path';
-import { readContacts } from '../src/utils/readContacts.js';
+// import path from 'node:path';
+// import { readContacts } from '../src/utils/readContacts.js';
 
-readContacts();
+// readContacts();
 
 // const pathToWorkDir = path.join(process.cwd());
 
-// console.log(pathToWorkDir);
+// console.log(process.cwd());
