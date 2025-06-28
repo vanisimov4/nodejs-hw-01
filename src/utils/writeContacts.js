@@ -1,7 +1,7 @@
 import * as fs from 'node:fs/promises';
 import { PATH_DB } from '../constants/contacts.js';
 
-const updatedContacts = 'Це дані, які ми записуємо у файл1.';
+// const updatedContacts = 'Це дані, які ми записуємо у файл2.';
 
 export const writeContacts = async (updatedContacts) => {
   //   const data = 'Це дані, які ми записуємо у файл.';
@@ -13,4 +13,4 @@ export const writeContacts = async (updatedContacts) => {
   }
 };
 
-writeContacts(updatedContacts);
+// writeContacts(updatedContacts);
