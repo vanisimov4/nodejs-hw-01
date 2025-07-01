@@ -3,17 +3,21 @@ import { readContacts } from '../utils/readContacts.js';
 import { writeContacts } from '../utils/writeContacts.js';
 
 export const addOneContact = async () => {
-  readContacts()
-    .then((oldContacts) => {
-      const oldContactsParsed = JSON.parse(oldContacts);
-      console.log(oldContactsParsed);
-      const fakerContacts = createFakeContact();
-      console.log(fakerContacts);
-      const newContacts = oldContactsParsed.concat(fakerContacts);
-      console.log(newContacts);
-      writeContacts(JSON.stringify(newContacts));
-    })
-    .catch((error) => console.error(error));
+  try {
+    const oldContactsParsed = await readContacts();
+    const fakerContact = createFakeContact();
+    console.log(fakerContact);
+    const newContacts = oldContactsParsed.concat(fakerContact);
+    console.log(newContacts);
+    writeContacts(newContacts);
+  } catch (error) {
+    console.error(error);
+  }
+  // readContacts()
+  //   .then((oldContactsParsed) => {
+  // const oldContactsParsed = JSON.parse(oldContacts);
+  // console.log(oldContactsParsed);
+  // .catch((error) => console.error(error));
 };
 
 addOneContact();
