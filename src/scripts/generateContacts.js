@@ -6,21 +6,17 @@ import { writeContacts } from '../utils/writeContacts.js';
 const generateContacts = async (number) => {
   try {
     const oldContactsParsed = await readContacts();
-    console.log('Old cotacts:', oldContactsParsed);
+
     const fakerContacts = faker.helpers.multiple(createFakeContact, {
       count: number,
     });
-    console.log(fakerContacts);
+    // console.log(fakerContacts);
     const newContacts = oldContactsParsed.concat(fakerContacts);
-    console.log(newContacts);
-    writeContacts(newContacts);
+    // console.log(newContacts);
+    await writeContacts(newContacts);
   } catch (error) {
-    // readContacts()
-    //   .then((oldContactsParsed) => {
-    // const oldContactsParsed = JSON.parse(oldContacts);
-
     console.error(error);
   }
 };
 
-generateContacts(1);
+generateContacts(5);

@@ -6,18 +6,13 @@ export const addOneContact = async () => {
   try {
     const oldContactsParsed = await readContacts();
     const fakerContact = createFakeContact();
-    console.log(fakerContact);
+    // console.log(fakerContact);
     const newContacts = oldContactsParsed.concat(fakerContact);
-    console.log(newContacts);
-    writeContacts(newContacts);
+    // console.log(newContacts);
+    await writeContacts(newContacts);
   } catch (error) {
     console.error(error);
   }
-  // readContacts()
-  //   .then((oldContactsParsed) => {
-  // const oldContactsParsed = JSON.parse(oldContacts);
-  // console.log(oldContactsParsed);
-  // .catch((error) => console.error(error));
 };
 
 addOneContact();
